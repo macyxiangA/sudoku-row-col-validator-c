@@ -1,46 +1,10 @@
-////////////////////////////////////////////////////////////////////////////////
-// Main File:        check_sudoku_board.c
-// This File:        check_sudoku_board.c
-// Other Files:      none
-// Semester:         CS 354 Lecture 001 Fall 2025
-// Grade Group:      gg1
-// Instructor:       
-// 
-// Author:           Macy Xiang
-// Email:            yxiang37@wisc.edu
-// CS Login:         yxiang37
-//
-///////////////////////////  OPTIONAL WORK LOG  //////////////////////////////
-//  Document your work sessions here or on your copy http://tiny.cc/cs354-work-log
-//  Keep track of commands, structures, and code that you have learned.
-//  This will help you focus your review on what is new to you from each program.
-//  There is no need to submit work log, unless we ask you to do so.
-//////////////////// REQUIRED -- OTHER SOURCES OF HELP ///////////////////////// 
-// Persons:          none
-//
-// Online sources:   Avoid web searches to solve your problems, but if you do
-//                   search, be sure to include Web URLs and description of 
-//                   of any information you find.
-// 
-// AI chats:         none
-//////////////////////////// 80 columns wide ///////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-// Copyright 2021-25 Deb Deppeler
-// Posting or sharing this file is prohibited, including any changes/additions.
-// Shared with permission: Hina Mahmood (FALL 2025)
-// We have provided comments and structure for this program to help you get 
-// started. Later programs will not provide the same level of commenting,
-// rather you will be expected to add the same level of comments to your work.
-////////////////////////////////////////////////////////////////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 char *DELIM = ",";  // commas ',' are a common delimiter character for data strings
 
-/* TODO: implement this function
- * Returns 1 if and only if the 2D array of ints in board 
+/* Returns 1 if and only if the 2D array of ints in board 
  * is in a valid Sudoku board state. Otherwise returns 0.
  *
  * DOES NOT PRODUCE ANY PRINTED OUTPUT
@@ -107,9 +71,8 @@ int valid_sudoku_board(int **board, int size) {
 	}
 	return 1;   
 }    
-
-/* COMPLETED (DO NOT EDIT)       
- * Read the first line of file to get the size of the board.
+     
+/* Read the first line of file to get the size of the board.
  * 
  * PRE-CONDITION #1: file exists
  * PRE-CONDITION #2: first line of file contains valid non-zero integer value
@@ -138,8 +101,7 @@ void get_board_size(FILE *fptr, int *size) {
 }
 
 
-/* TODO: COMPLETE THE MAIN FUNCTION
- * This program prints "valid" (without quotes) if the input file contains
+/* This program prints "valid" (without quotes) if the input file contains
  * a valid state of a Sudoku puzzle board with respect to rows and columns
  * only. It prints "invalid" (without quotes) if the input file is not valid.
  *
@@ -153,7 +115,7 @@ void get_board_size(FILE *fptr, int *size) {
  */
 int main( int argc, char **argv ) {              
 
-	// TODO: Check if number of command-line arguments is correct.
+	// Check if number of command-line arguments is correct.
 	if(argc!=2){
 		printf("Usage: ./check_sudoku_board <input_filename>\n");
 		exit(1);
@@ -169,7 +131,7 @@ int main( int argc, char **argv ) {
 	// will store the board's size, number of rows and columns
 	int size;
 
-	// TODO: Call get_board_size to read first line of file as the board size.
+	// Call get_board_size to read first line of file as the board size.
 	get_board_size(fp, &size);
 	if (size < 1 || size > 9) {
     printf("invalid\n");      
@@ -180,7 +142,7 @@ int main( int argc, char **argv ) {
     return 0; 
 }
 
-	// TODO: Dynamically allocate a 2D array for given board size.
+	// Dynamically allocate a 2D array for given board size.
 	// You must dyamically create an array of pointers to other arrays of ints
 	int **board = (int**) malloc(size*sizeof(int*));
 	if(board == NULL){
@@ -250,7 +212,7 @@ int main( int argc, char **argv ) {
 		}
 	}
 
-	// TODO: Call valid_sudoku_board and print the appropriate
+	// Call valid_sudoku_board and print the appropriate
 	//       output depending on the function's return value.
 	int ok = valid_sudoku_board(board, size);
 	printf(ok ? "valid\n" : "invalid\n");
