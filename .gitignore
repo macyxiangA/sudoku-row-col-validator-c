@@ -1,0 +1,16 @@
+# Compiled binaries
+check_sudoku_board
+*.o
+*.i
+*.s
+
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+*.swp
+*.tmp
+
+# Debug / crash files
+core
