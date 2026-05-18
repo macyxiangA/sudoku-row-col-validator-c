@@ -37,6 +37,10 @@ int valid_sudoku_board(int **board, int size) {
 		for(int c = 0; c < size; c++){
 			int v = *(*(board+r)+c);
 			if(v == 0) continue;
+			if(v < 0 || v > size) {
+				free(seen);
+				return 0;
+			}
 			int index = v-1;
 			if(*(seen+index) == 1) {
 				free(seen);
@@ -60,6 +64,10 @@ int valid_sudoku_board(int **board, int size) {
 		for(int r = 0; r<size; r++){
 			int v = *(*(board+r)+c);
 			if (v == 0) continue;
+			if(v < 0 || v > size) {
+				free(seen);
+				return 0;
+			}
 			int index = v-1;
 			if(*(seen+index) == 1){
 				free(seen);
@@ -193,7 +201,17 @@ int main( int argc, char **argv ) {
 
 		token = strtok(line, DELIM);
 		for (int j = 0; j < size; j++) {
-			// TODO: Complete the line of code below
+			if (token == NULL) {
+				printf("invalid\n");
+				free(line);
+				for (int r = 0; r < size; r++) free(*(board + r));
+				free(board);
+				if (fclose(fp) != 0) {
+					printf("Error while closing the file.\n");
+					exit(1);
+				}
+				return 0;
+			}
 			int v = atoi(token);
 			if (v < 0 || v > size) {
     		printf("invalid\n");
@@ -217,7 +235,6 @@ int main( int argc, char **argv ) {
 	int ok = valid_sudoku_board(board, size);
 	printf(ok ? "valid\n" : "invalid\n");
 
-	// TODO: Free dynamically allocated memory.
 	for (int i = 0; i < size; i++) {
     free(*(board + i));   
 	}
@@ -232,4 +249,3 @@ int main( int argc, char **argv ) {
 
 	return 0;       
 }       // 202509
-

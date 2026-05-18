@@ -54,7 +54,11 @@ In this format, 0 represents a blank cell.
 
 Compile with a standard C compiler:
 
-    gcc check_sudoku_board.c -o check_sudoku_board
+    make
+
+Or compile directly:
+
+    gcc -std=c11 -Wall -Wextra -pedantic check_sudoku_board.c -o check_sudoku_board
 
 ## Run
 
@@ -78,18 +82,6 @@ If the program is called with the wrong number of arguments, it prints a usage m
 - Each row and column is checked using a temporary "seen" array of length N to detect duplicates.
 - All allocated memory is freed before exit in both success and failure paths.
 
-## Version Control Recommendations
-
-The following files are build artifacts and should typically be excluded from version control:
-
-- check_sudoku_board
-- *.o
-- *.i
-- *.s
-
-If you want a clean repository, include these in a .gitignore file.
-
 ## License
 
 This project is intended for learning and demonstration purposes.
-
